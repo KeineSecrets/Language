@@ -2,6 +2,8 @@
 <h2>Getting Started</h2>
 <p>For the dependencies scroll down.</p>
 
+[![](https://jitpack.io/v/sebvstian/Language.svg)](https://jitpack.io/#sebvstian/Language)
+
 <p>First implement the latest version to your project. <br> Maven, Gradle or just the jar from the releases.</p>
 <hr>
 First You'll need the LanguageProcessor that reads the files.<br>
