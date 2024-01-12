@@ -9,14 +9,14 @@ Create an instance of the processor:<br>
 The default path where your files should be when using no path parameter is - "src/main/resources/lang/"
 
    ````java
-   LanguageProcessor languageProcessor=new LanguageProcessor();
+   LanguageProcessor languageProcessor = new LanguageProcessor();
    ````
 
 
 Or use a custom path where u want your files to be:<br>
 
    ````java
-   LanguageProcessor languageProcessor=new LanguageProcessor("src/main/resources/languages/");
+   LanguageProcessor languageProcessor = new LanguageProcessor("src/main/resources/languages/");
    ````
 
 <hr>
