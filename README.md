@@ -6,6 +6,9 @@
 
 <p>First implement the latest version to your project. <br> Maven, Gradle or just the jar from the releases.</p>
 <hr>
+<h2>Disclaimer</h2>
+<p>Do not use any methods that are marked internal. These methods can be changed or removed without notice.</p>
+<hr>
 First You'll need the LanguageProcessor that reads the files.<br>
 
 Create an instance of the processor:<br>
