@@ -5,7 +5,8 @@
 <hr>
 First You'll need the LanguageProcessor that reads the files.<br>
 
-Create an instance of the processor: (default path: "src/main/resources/lang/")<br>
+Create an instance of the processor:<br>
+The default path where your files should be when using no path parameter is - "src/main/resources/lang/"
 
    ````java
    LanguageProcessor languageProcessor=new LanguageProcessor();
