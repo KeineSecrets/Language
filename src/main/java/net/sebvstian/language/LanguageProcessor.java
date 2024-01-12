@@ -5,6 +5,7 @@ import net.sebvstian.language.model.Language;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
@@ -16,7 +17,7 @@ import java.util.logging.Logger;
  */
 public class LanguageProcessor {
 
-    private final Logger logger = Logger.getLogger("LangProcessor");
+    private final Logger logger = Logger.getLogger("LanguageProcessor");
     private final Map<Language, Properties> languageMap = new HashMap<>();
     private String langPath = "src/main/resources/lang/";
 
@@ -29,12 +30,30 @@ public class LanguageProcessor {
         this.langPath = (langPath.endsWith("/") ? langPath : langPath + "/");
     }
 
+    /**
+     * Creates a new LanguageProcessor instance with a custom path.
+     * @param langPath custom path where the lang files are located at.
+     * @param languages the languages to be loaded
+     */
+    public LanguageProcessor(String langPath, Language... languages) {
+        this.langPath = (langPath.endsWith("/") ? langPath : langPath + "/");
+        Arrays.stream(languages).forEach(this::initialize);
+    }
 
     /**
      * Creates a new LanguageProcessor instance with the default path.
      * The default path is {@link LanguageProcessor#langPath}
      */
     public LanguageProcessor() {}
+
+    /**
+     * Creates a new LanguageProcessor instance with the default path.
+     * The default path is {@link LanguageProcessor#langPath}
+     * @param languages the languages to be loaded
+     */
+    public LanguageProcessor(Language... languages) {
+        Arrays.stream(languages).forEach(this::initialize);
+    }
 
     /**
      * Reads the file and stores the content in a cache.
