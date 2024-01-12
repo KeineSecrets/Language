@@ -1,5 +1,7 @@
 
-<h2>Getting Started to use Language by sebvstian</h2>
+<h2>Getting Started</h2>
+<p>For the dependencies scroll down.</p>
+<hr>
 
 <p>First implement the latest version to your project. <br> Maven, Gradle or just the jar from the releases.</p>
 <hr>
@@ -84,6 +86,22 @@ test.plugin.hello="Hello World!"
 test.plugin.info="Look at this cool Animal! -> %s"
 ````
 <a href="https://docs.oracle.com/cd/E23095_01/Platform.93/ATGProgGuide/html/s0204propertiesfileformat01.html">Click here to view the oracle docs for Properties File Format</a>
+
+<h3>Maven</h3>
+<p>Implement jitpack and then my dependency</p>
+
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+
+        <dependency>
+            <groupId>com.github.sebvstian</groupId>
+            <artifactId>Language</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
+<hr>
 
 <h3>Rights & Info</h3>
 <p>
