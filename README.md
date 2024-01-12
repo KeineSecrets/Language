@@ -1,5 +1,5 @@
 
-<h2>Getting Started to use Language by sebvstian</h2>
+<h2>Getting Started</h2>
 
 <p>First implement the latest version to your project. <br> Maven, Gradle or just the jar from the releases.</p>
 <hr>
