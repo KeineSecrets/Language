@@ -1,7 +1,6 @@
 
 <h2>Getting Started</h2>
 <p>For the dependencies scroll down.</p>
-<hr>
 
 <p>First implement the latest version to your project. <br> Maven, Gradle or just the jar from the releases.</p>
 <hr>
