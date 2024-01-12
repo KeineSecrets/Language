@@ -1,6 +1,7 @@
 package net.sebvstian.language.model;
 
 import net.sebvstian.language.LanguageManager;
+import net.sebvstian.language.LanguageProcessor;
 
 /**
  * functionality written by sebvstian.
@@ -20,6 +21,8 @@ public class Language {
     public Language(final String name, final String fileName) {
         this.name = name;
         this.fileName = fileName;
+
+
     }
 
     public String getFileName() {
