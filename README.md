@@ -23,7 +23,7 @@ Translate them easily w/ arguments like<br>
    <p>Or use a custom path to your .properties files</p>
 
     ```java
-   LanguageProcessor languageProcessor = new LanguageProcessor("src/main/resources/german.properties");
+   LanguageProcessor languageProcessor = new LanguageProcessor("src/main/resources/languages/");
     ```
    
    <hr>
