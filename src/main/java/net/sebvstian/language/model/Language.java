@@ -1,35 +1,18 @@
 package net.sebvstian.language.model;
 
-import net.sebvstian.language.LanguageManager;
-import net.sebvstian.language.LanguageProcessor;
-
 /**
  * functionality written by sebvstian.
  * Language > written on 12.01.2024
  */
-public class Language {
+public record Language(String name, String fileName) {
 
     /**
-     * Example: "Deutsch"
+     * Returns the file name with a ".properties" extension if it doesn't already have one.
+     *
+     * @return the modified file name with a ".properties" extension
      */
-    private final String name;
-    /**
-     * Example: "de_DE.properties"
-     */
-    private final String fileName;
-
-    public Language(final String name, final String fileName) {
-        this.name = name;
-        this.fileName = fileName;
-
-
-    }
-
-    public String getFileName() {
+    @Override
+    public String fileName() {
         return (fileName.endsWith(".properties") ? fileName : fileName + ".properties");
-    }
-
-    public String getName() {
-        return name;
     }
 }

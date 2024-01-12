@@ -1,5 +1,6 @@
 package net.sebvstian.language;
 
+import net.sebvstian.language.internal.Internal;
 import net.sebvstian.language.model.Language;
 
 import java.io.FileInputStream;
@@ -21,7 +22,7 @@ public class LanguageProcessor {
 
 
     /**
-     *
+     * Creates a new LanguageProcessor instance with a custom path.
      * @param langPath custom path where the lang files are located at.
      */
     public LanguageProcessor(String langPath) {
@@ -30,13 +31,16 @@ public class LanguageProcessor {
 
 
     /**
-     * No path. Default = "src/main/resources/lang/langFileName.properties"
+     * Creates a new LanguageProcessor instance with the default path.
+     * The default path is {@link LanguageProcessor#langPath}
      */
     public LanguageProcessor() {}
 
     /**
      * Reads the file and stores the content in a cache.
      * To update message in real-time just call this function anytime.
+     *
+     * @param languages the languages to be loaded
      */
     public void initialize(Language... languages) {
         for (Language language : languages) {
@@ -51,6 +55,8 @@ public class LanguageProcessor {
     /**
      * Reads the file and stores the content in a cache.
      * To update message in real-time just call this function anytime.
+     *
+     * @param language the language to be loaded
      */
     public void initialize(Language language) {
         try {
@@ -60,16 +66,23 @@ public class LanguageProcessor {
         }
     }
 
-
+    /**
+     * Loads a language into the system. This method is marked as {@link Internal}
+     * and can be removed in the future without notice. Please use {@link #initialize(Language)} or {@link #initialize(Language...)} to initialize the language(s).
+     *
+     * @param language  the language to be loaded
+     * @throws IOException  if there is an error reading the language file
+     */
+    @Internal
     private void loadLanguage(Language language) throws IOException {
         FileInputStream fileInputStream = null;
         Properties properties = new Properties();
 
         try {
-            fileInputStream = new FileInputStream(langPath + language.getFileName());
+            fileInputStream = new FileInputStream(langPath + language.fileName());
             properties.load(fileInputStream);
             languageMap.put(language, properties);
-            logger.info("Language: " + language.getName() + " was loaded!");
+            logger.info("Language: " + language.name() + " was loaded!");
         } finally {
             if(fileInputStream != null) {
                 try {
@@ -82,6 +95,12 @@ public class LanguageProcessor {
         }
     }
 
+    /**
+     * Retrieves the properties associated with a given language.
+     *
+     * @param  language  the language for which properties are retrieved
+     * @return           the properties associated with the given language
+     */
     public Properties getProperties(Language language) {
         return languageMap.get(language);
     }
