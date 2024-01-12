@@ -1,4 +1,4 @@
-package net.sebvstian.language;
+package net.sebvstian.language.model;
 
 /**
  * functionality written by sebvstian.

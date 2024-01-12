@@ -1,5 +1,7 @@
 package net.sebvstian.language;
 
+import net.sebvstian.language.model.Language;
+
 import java.util.Properties;
 
 /**

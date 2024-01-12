@@ -1,5 +1,7 @@
 package net.sebvstian.language;
 
+import net.sebvstian.language.model.Language;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.HashMap;
