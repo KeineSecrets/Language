@@ -1,81 +1,82 @@
-# Language System
+<hr>
 
-<ul>
-A language system for your projects.<br>
-Create .properties files with keys and values.<br>
-Translate them easily w/ arguments like<br>
-%s: String<br>
-%d: Decimal (integer)<br>
-%f: Floating-point<br>
-%c: Character<br>
-%b: Boolean<br>
-</ul>
+<h2>Getting Started</h2>
 
-## Getting Started
+<p>Implement the latest release</p>
+
+You'll need the LanguageProcessor that reads the files.<br>
+
+Create an instance of the processor: (default path: "src/main/resources/lang/")<br>
+
+   ````java
+   LanguageProcessor languageProcessor=new LanguageProcessor();
+   ````
 
 
-1. **Create an Instance of the `LanguageProcessor`:**
+Or you a custom path where u want your files to be:<br>
 
-    ```java
-    LanguageProcessor languageProcessor = new LanguageProcessor();
-    ```
+   ````java
+   LanguageProcessor languageProcessor=new LanguageProcessor("src/main/resources/languages/");
+   ````
 
-   <p>Or use a custom path to your .properties files</p>
+<hr>
 
-    ```java
-   LanguageProcessor languageProcessor = new LanguageProcessor("src/main/resources/languages/");
-    ```
+<h3>Initialize you languages:</h3>
+<p>The first argument is the name, that is just for working. <br> The second argument is the file-name, that is very important.</p>
+<p>So the following path would be "src/main/resources/lang/german.properties"</p>
+
+````java
+Language de_DE = new Language("German", "german.properties");
+Language en_US = new Language("English", "english.properties");
+````
+
+<p>Next step is to let the processor know what languages he needs to process.</p>
+
+````java
+languageProcessor.initialize(de_DE);
+languageProcessor.initialize(en_US);
+````
+<hr>
+
+<h3>Now the languages are fully stored / cached.</h3>
+
+
+<p>Create an instance of the manager:</p>
+
+````java
+LanguageManager languageManager = new LanguageManager(languageProcessor);
+````
+This way you need to use manager#translate(Language, String)<br>
+But you can also define the language directly at the instance using:
+
+````java
+LanguageManager languageManager = new LanguageManager(languageProcessor, de_DE);
+````
+This way you can easily use manager#translate(String)
+
+You can also add another parameter for the arguments. If you are going to use variables in the properties file.<br>
+````properties
+test.plugin.info="Look at this cool Animal! -> %s" 
+````
+Thats the same syntax as when using String#format
+````java
+languageManager.translate(de_DE, "test.plugin.info", "Cow");
+````
+
+<h3>Thats how the properties files should look like</h3>
+<p>You can define everything by yourself, the keys and the values!</p>
+
+````properties
+# english.properties
+test.plugin.hello="Hello World!"
+test.plugin.info="Look at this cool Animal! -> %s"
+````
+<a href="https://docs.oracle.com/cd/E23095_01/Platform.93/ATGProgGuide/html/s0204propertiesfileformat01.html">Click here to view the oracle docs for Properties File Format</a>
+
+<h3>Rights & Info</h3>
+<p>Feel free to use this for any project u want!</p>
+<p>I take no responsibility for silly projects that use my library!</p>
+<p>Credits are welcome but not a must ;-)</p>
+
+
    
-   <hr>
-
-2. **Initialize Desired Languages:**
-
-    ```java
-    Language de_DE = new Language("Deutsch", "german.properties");
-    Language en_US = new Language("English", "english.properties");
-
-    languageProcessor.initialize(de_DE);
-    languageProcessor.initialize(en_US);
-    ```
-
-<hr>
-
-3. **Create a `LanguageManager` and Pass the `LanguageProcessor`:**
-
-    ```java
-    LanguageManager languageManager = new LanguageManager(languageProcessor);
-    ```
-
-<hr>
-
-4. **Translate Messages using the `LanguageManager`:**
-
-    ```java
-    String greeting = languageManager.translate(de_DE, "test.plugin.hello");
-    System.out.println(greeting);
-    ```
-
-   Include dynamic content in translations:
-
-    ```java
-    String infoDE = languageManager.translate(de_DE, "test.plugin.info", new SimpleDateFormat("HH:mm:ss").format(System.currentTimeMillis()));
-    System.out.println(infoDE);
-
-    String infoEN = languageManager.translate(en_US, "test.plugin.info", new SimpleDateFormat("HH:mm:ss").format(System.currentTimeMillis()));
-    System.out.println(infoEN);
-    ```
-
-<hr>
-
-5. **How the .properties file should look like**
-   ```properties
-   # german.properties
-   test.plugin.hello="Hallo Welt!"
-   test.plugin.info="Aktuelle Uhrzeit beträgt %s"
-   ```
-
-   ```properties
-   # english.properties
-   test.plugin.hello="Hello World!"
-   test.plugin.info="The current time is %s"
-   ```

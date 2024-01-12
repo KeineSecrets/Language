@@ -1,5 +1,7 @@
 package net.sebvstian.language.model;
 
+import net.sebvstian.language.LanguageManager;
+
 /**
  * functionality written by sebvstian.
  * Language > written on 12.01.2024
